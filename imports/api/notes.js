@@ -27,5 +27,35 @@ Meteor.methods({
             userId:this.userId,
             dateAdded:moment().valueOf()
         })
+      },
+      'notes.update'(noteinfo){
+        if(!this.userId){
+          throw new Meteor.Error('not authorized');
+        }
+        Notes.update(
+          {
+            _id:noteinfo[0]
+          },
+          {$set:{
+                    body:noteinfo[1],
+
+                }
+          }
+      )
+    },
+    'notes.updateTitle'(noteinfo){
+      if(!this.userId){
+        throw new Meteor.Error('not authorized');
       }
+      Notes.update(
+        {
+          _id:noteinfo[0]
+        },
+        {$set:{
+                  title:noteinfo[1],
+
+              }
+        }
+    )
+    }
 });

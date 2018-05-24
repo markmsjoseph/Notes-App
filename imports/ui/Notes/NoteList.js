@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import NotesListHeader from './NotesListHeader';
 import NoteListItem from './NoteListItem';
 import NoteListEmptyItem from './NoteListEmptyItem';
+import EditNotes from './EditNotes';
 import {Session} from 'meteor/session';
 
 export default class NoteList extends React.Component {
@@ -22,12 +23,12 @@ export default class NoteList extends React.Component {
       // console.log("ComponentDidMount fires AllPost");
       this.postTracker =  Tracker.autorun(() => {
           const selectedNoteId = Session.get('selectedNoteId');
-          console.log("Current note :", selectedNoteId);
+          //console.log("Current note :", selectedNoteId);
           Meteor.subscribe('yourNotes');
           //find all links which are approved. then call fetch on cursor to get all link documents back
           const allYourNotes = Notes.find({}).fetch();
           this.setState({notes:allYourNotes});
-            console.log("SUPPOSED TO BE NOTES ARRAY: ",this.state.notes);
+            //console.log("SUPPOSED TO BE NOTES ARRAY: ",this.state.notes);
       });
 
 
@@ -60,6 +61,7 @@ export default class NoteList extends React.Component {
                 {this.state.notes.length===0 ? <NoteListEmptyItem/> : <NotesListHeader length={this.state.notes.length}/>}
 
                 {this.renderAllNoteListItems()}
+                <EditNotes/>
         </div>
       );
     }
