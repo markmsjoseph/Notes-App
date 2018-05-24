@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import NotesListHeader from './NotesListHeader';
 import NoteListItem from './NoteListItem';
 import NoteListEmptyItem from './NoteListEmptyItem';
+import {Session} from 'meteor/session';
 
 export default class NoteList extends React.Component {
 
@@ -20,6 +21,8 @@ export default class NoteList extends React.Component {
     componentDidMount() {
       // console.log("ComponentDidMount fires AllPost");
       this.postTracker =  Tracker.autorun(() => {
+          const selectedNoteId = Session.get('selectedNoteId');
+          console.log("Current note :", selectedNoteId);
           Meteor.subscribe('yourNotes');
           //find all links which are approved. then call fetch on cursor to get all link documents back
           const allYourNotes = Notes.find({}).fetch();
@@ -39,8 +42,12 @@ export default class NoteList extends React.Component {
 
 
     renderAllNoteListItems(){
+      const selectedNoteId = Session.get('selectedNoteId');
       return this.state.notes.map((notes)=>{
-        return <NoteListItem key={notes._id}   {...notes} />;
+        //from the state array, which is the data stored in the database, we take that database data
+        //and we pass it into notelistitem for each note(this will format etc). we use the spreat operator
+        //to get all this data and we pass in the id of the currently selected note
+        return <NoteListItem key={notes._id} {...notes} isSelected = {selectedNoteId} />;
 
       });
     }
@@ -51,6 +58,7 @@ export default class NoteList extends React.Component {
       return (
         <div>
                 {this.state.notes.length===0 ? <NoteListEmptyItem/> : <NotesListHeader length={this.state.notes.length}/>}
+
                 {this.renderAllNoteListItems()}
         </div>
       );
