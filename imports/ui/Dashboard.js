@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PrivateHeader from './PrivateHeader';
-import NoteList from './Notes/NoteList';
+import NoteListMainContainer from './Notes/NoteListMainContainer';
 
 
 export default class Home extends React.Component {
 
-  constructor(props) {
+    constructor(props) {
     super(props);
         this.state = {
         username:""
@@ -14,42 +14,33 @@ export default class Home extends React.Component {
   }
 
     componentWillMount() {
-        if(!Meteor.userId()) {
-          console.log("No user but trying to go back: In ComponentDidMount from Link.js");
-          this.props.history.push('/');
-        }
-
+        //set the global session variable currentPagePrivacy to the value that was passed in as props from the route component in main.js
+        Session.set('currentPagePrivacy', this.props.priavteOrPublic);//set session id
     }
 
     componentDidMount() {
       this.postTracker =  Tracker.autorun(() => {
-          console.log("USERNAME-----------------------:", Meteor.user());
           if(Meteor.user()){
-            this.setState(()=>{
-              return{
-                username:Meteor.user().username
-              }
-            });
+              this.setState(()=>{
+                return{
+                  username:Meteor.user().username
+                }
+              });
           }
-          else{
-            console.log("No User");
-          }
-      });
-
+      });//end tracker
     }
 
-
     render() {
+              console.log("Render called");
               return (
                   <div>
                         <div className = "wrapper wrapper-top">
                                     <PrivateHeader  title="All Notes"  />
                                     <p className = "logged-in-as">Logged in as:{this.state.username} </p>
                         </div>
-                        <NoteList />
+                        <NoteListMainContainer />
                   </div>
               );
     }
-
 
   }

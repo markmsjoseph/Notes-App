@@ -27,3 +27,4 @@ okgrow:image-upload
 twbs:bootstrap
 cfs:filesystem
 practicalmeteor:mocha
+react-meteor-data
