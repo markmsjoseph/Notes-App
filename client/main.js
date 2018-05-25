@@ -20,14 +20,12 @@ const history = createHistory();
 //https://www.sitepoint.com/react-router-v4-complete-guide/
 const routes = (
   <Router history={history}>
-      <Route>
             <Switch>
-                <Route path="/signup"  render={ (props) => <Login priavteOrPublic= {"publicRoute"} {...props} />} />
-                <Route path="/" render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />
-                <Route path="/:id" render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />
+                <Route path="/signup"  exact={true} render={ (props) => <Login priavteOrPublic= {"publicRoute"} {...props} />} />
+                <Route path="/" exact={true} render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />
+                <Route path="/:id" exact={true} render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />
                 <Route path="*" component={NotFound} />
             </Switch>
-      </Route>
   </Router>
 );
 

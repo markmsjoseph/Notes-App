@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PrivateHeader from './PrivateHeader';
 import NoteListMainContainer from './Notes/NoteListMainContainer';
+import {Session} from 'meteor/session';
+
 
 
 export default class Home extends React.Component {
@@ -18,6 +20,7 @@ export default class Home extends React.Component {
         Session.set('currentPagePrivacy', this.props.priavteOrPublic);//set session id
     }
 
+
     componentDidMount() {
       this.postTracker =  Tracker.autorun(() => {
           if(Meteor.user()){
@@ -27,8 +30,9 @@ export default class Home extends React.Component {
                 }
               });
           }
-      });//end tracker
+      });
     }
+
 
     render() {
               console.log("Render called");

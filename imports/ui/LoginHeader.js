@@ -1,10 +1,13 @@
 import React from 'react';
 import { Accounts } from 'meteor/accounts-base';
+import {Session} from 'meteor/session';
+
 
 export default class LoginHeader extends React.Component {
 
   onLogout() {
     console.log("logout clicked");
+    Session.set('selectedNoteId', undefined);//set session id
     Accounts.logout();
   }
 

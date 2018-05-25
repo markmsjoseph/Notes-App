@@ -36,6 +36,7 @@ export default class Login extends React.Component {
             this.setState({error:"Login Failed. Check Email and Password"});
           }
           else{
+              Session.set('selectedNoteId', undefined);//set session id
             this.setState({error:''});
           }
 
