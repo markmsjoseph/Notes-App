@@ -21,7 +21,8 @@ Meteor.methods({
           throw new Meteor.Error('not authorized');
         }
         console.log("CREATING A NEW NOTE");
-        Notes.insert({
+        //notes.insert gives the  reutn value of id.
+        return Notes.insert({
             title:'',
             body:'',
             userId:this.userId,
@@ -42,6 +43,16 @@ Meteor.methods({
           }
 
         });
+      },
+      'notes.delete'(id){
+        //if there is no user, you cannot insert a note
+        if(!this.userId){
+          throw new Meteor.Error('not authorized');
+        }
+        console.log("Deleting A NOTE");
+        Notes.remove({
+          _id:id
+        })
       }
 
     });

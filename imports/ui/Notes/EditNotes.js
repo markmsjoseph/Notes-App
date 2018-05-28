@@ -4,38 +4,80 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Session } from 'meteor/session';
 import { Meteor } from 'meteor/meteor';
 import { Notes } from '../../api/notes';
+import { history } from '../../../client/main.js';
 
-export const Editor =(props)=> {
+export  class Editor extends React.Component {
 
-  const handleBodyChange = (e)=> {
-    props.call('notes.update', props.note._id, {
-      body: e.target.value
-    });
+  constructor(props) {
+       super(props);
+        this.state={
+         title:'',
+         body:''
+        }
+     }
+
+  //this is called right after the props or state of this component is changed
+  componentDidUpdate(prevProps, prevState){
+    //turnary operator, if a note exist, get it's ID otherwise return undefined. this removes the error of trying
+    //to access a poeperty of an undefined object
+    const currentNoteId = this.props.note ? this.props.note._id : undefined;
+    const prevNoteId = prevProps.note ? prevProps.note._id : undefined;
+
+    //if there is a note and the current note is not the previous(already the same no need to reset stuff)
+    if(currentNoteId && currentNoteId != prevNoteId){
+      //set the title and body to show what it previously had in the input fields
+      this.setState({
+        title: this.props.note.title,
+        body:this.props.note.body
+      });
+    }
+
+  }
+  //get the text typed in, set it to the state, and save the text that was passed in to the database
+  handleBodyChange = (e)=> {
+          const body = e.target.value;
+          this.setState({body});
+          //call update and pass in as the arguments the noteid and the update
+          this.props.call('notes.update', this.props.note._id, {body});
+    }
+
+  handleTitleChange =(e)=> {
+     const title = e.target.value;
+      this.setState({title});
+      this.props.call('notes.update', this.props.note._id, {title});
+    }
+
+  deleteNote = ()=>{
+      this.props.call('notes.delete', this.props.note._id);
+      //fixes error where when u delete a note the browser url still shows the note id
+      this.props.history.replace('/dashboard');
+      Session.set('selectedNoteId', '');
+
   }
 
-  const handleTitleChange =(e)=> {
-    props.call('notes.update', props.note._id, {
-      title: e.target.value
-    });
+  render(){
+        if (this.props.note) {
+            return (
+              <div>
+                <input value={this.state.title} placeholder="Untitled Note" onChange={this.handleTitleChange}/>
+                <textarea value={this.state.body} placeholder="Your note here" onChange={this.handleBodyChange}></textarea>
+                <button onClick={this.deleteNote}>Delete Note</button>
+              </div>
+            );
+        }
+        else {
+            return (
+              <p>
+                { this.props.selectedNoteId ? 'Note not found.' : 'Pick or create a note to get started.'}
+              </p>
+            );
+        }
   }
 
-  if (props.note) {
-    return (
-      <div>
-        <input value={props.note.title} placeholder="Untitled Note" onChange={handleTitleChange}/>
-        <textarea value={props.note.body} placeholder="Your note here" onChange={handleBodyChange}></textarea>
-        <button>Delete Note</button>
-      </div>
-    );
-  } else {
-    return (
-      <p>
-        { props.selectedNoteId ? 'Note not found.' : 'Pick or create a note to get started.'}
-      </p>
-    );
-  }
 
-};
+
+
+};//endclass
 
 
 export default createContainer(() => {
@@ -44,7 +86,8 @@ export default createContainer(() => {
   return {
     selectedNoteId:selectedNoteId,
     note: Notes.findOne(selectedNoteId),
-    call: Meteor.call
+    call: Meteor.call,
+    history:history
   };
 }, Editor);
 

@@ -1,14 +1,25 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import {Session} from 'meteor/session';
 //NOTE: DISPLAYS THE HEADER FOR ALL NOTES LIST AND A CRATE NOTES BUTTON
 
 //stateless functional components dont have a render method, just return
 export const NoteListHeader = (props) => {
 
   const createNoteClicked =()=>{
-    console.log("Create Note Clicked from noteListHeader");
-    props.meteorCall('notes.insert')
+      console.log("Create Note Clicked from noteListHeader");
+      props.meteorCall('notes.insert', (err, res) => {
+
+        //new note id will be available in res object
+        if(res){
+            console.log("res", res);
+          props.Session.set('selectedNoteId',res)
+        }
+        else {
+          console.log("ERROR",err);
+        }
+      });
   }
 
   return (
@@ -22,7 +33,8 @@ export const NoteListHeader = (props) => {
 
 export default createContainer(() => {
   return {
-    meteorCall: Meteor.call
+    meteorCall: Meteor.call,
+    Session
   };
 }, NoteListHeader);
 

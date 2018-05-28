@@ -9,7 +9,7 @@ import Dashboard from '../imports/ui/Dashboard';
 import NotFound from '../imports/ui/NotFound';
 import Login from '../imports/ui/Login';
 
-const history = createHistory();
+export const history = createHistory();
 
 
 //switch moves through route definitions in order till it finds a match so anything that
