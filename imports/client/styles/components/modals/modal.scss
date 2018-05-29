@@ -1,4 +1,14 @@
 $purple:#6924c4;
+
+.modal__style{
+  top: 50%;
+   left  : 50%;
+   right : auto;
+   bottom : auto;
+   margin-right: -50%;
+   transform : translate(-50%, -50%);
+}
+
 .ReactModal__Content.ReactModal__Content--after-open{
   height:300px;
   width:600px;
@@ -9,7 +19,6 @@ $purple:#6924c4;
     font-weight: 600;
 
 }
-
 
 .ReactModal__Content.ReactModal__Content--after-open button{
   font-size: 14px;

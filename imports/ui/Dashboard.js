@@ -38,11 +38,13 @@ export default class Home extends React.Component {
               console.log("Render called");
               return (
                   <div>
-                        <div className = "wrapper wrapper-top">
-                                    <PrivateHeader  title="All Notes"  />
-                                    <p className = "logged-in-as">Logged in as:{this.state.username} </p>
-                        </div>
-                        <NoteListMainContainer />
+                        <div className="header">
+                            <div className="header__content">
+                      <PrivateHeader  title="All Notes"  />
+                      <p className = "">Logged in as:{this.state.username} </p>
+                    </div>
+                  </div>
+                      <NoteListMainContainer />
                   </div>
               );
     }

@@ -23,8 +23,8 @@ export const NoteListHeader = (props) => {
   }
 
   return (
-          <div className="addpost__WrapperForm">
-              <button onClick={createNoteClicked}>Create Note</button>
+          <div className="item-list__header">
+              <button className="button" onClick={createNoteClicked}>Create Note</button>
           </div>
   );
 

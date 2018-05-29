@@ -12,15 +12,22 @@ import { createContainer } from 'meteor/react-meteor-data';
 //NOTE displays the noteliste header, note list iteems, and editor components
 export const NoteListMainContainer = (props) => {
   return (
-    <div>
-      <NotesListHeader/>
-      { props.notes.length === 0 ? <NoteListEmptyItem/> : undefined }
-      {props.notes.map((note) => {
-        return <NoteListItem key={note._id} note={note}/>;
-      })}
-      NoteList { props.notes.length }
-      <Editor/>
-    </div>
+            <div className="page-content">
+                    <div className="page-content__sidebar">
+                          <div className="item-list">
+                                <NotesListHeader/>
+                                { props.notes.length === 0 ? <NoteListEmptyItem/> : undefined }
+                                {props.notes.map((note) => {
+                                  return <NoteListItem key={note._id} note={note}/>;
+                                })}
+                                NoteList { props.notes.length }
+                          </div>
+                    </div>
+                    
+                    <div className="page-content__main">
+                        <Editor/>
+                    </div>
+          </div>
   );
 };
 

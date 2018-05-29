@@ -11,9 +11,13 @@ export default class PrivateHeader extends React.Component {
   render() {
     return (
       <div >
-        <h1 className = "title-bar"> {this.props.title}</h1>
+
+
+        <h1 className = "header__title"> {this.props.title}</h1>
         <h3 className = "subtitle-bar"> {this.props.subtitle}</h3>
         <button className = "logoutButton" onClick={this.onLogout.bind(this)}>Logout</button>
+    
+
       </div>
     );
   }

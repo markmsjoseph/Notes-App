@@ -4,9 +4,9 @@ import React from 'react';
 //NOTE DISPLAYS ONLY IF THERE ARE NO NOTES
 const NoteListEmptyItem = () => {
   return (
-   <div className = "wrapper wrapper__post">
-      <h5>You have not notes</h5>
-      <p>Create a note to get started!</p>
+   <div className = " ">
+
+      <p className = "empty-item">Create a note to get started!</p>
     </div>
   );
 };

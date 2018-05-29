@@ -1,0 +1,77 @@
+
+@mixin desktopView(){
+  //apply styles when the browser is atleast 50rem
+  @media (min-width:50rem){
+    @content
+  }
+
+}
+
+
+.page-content {
+  display: flex;
+  height: $page-content-height;
+  margin: 0 auto;
+  max-width: $site-max-width;
+  padding: $large-space $space;
+}
+
+
+
+//******************************************** editor ********************************************
+.page-content__main {
+  display: flex;
+  width: $page-content-main-width;
+  background-color: green;
+
+}
+
+.editor {
+  background-color: white;
+  border: 1px solid $grey;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: $large-space;
+
+}
+
+.editor__title {
+  border: none;
+  border-bottom: 2px solid $grey;
+  font-size: $large-font-size;
+  margin-bottom: $large-space;
+  outline: none;
+  padding: $input-spacing;
+}
+
+.editor__body {
+   flex-grow: 1;
+   font-weight: 300;
+   margin-bottom: $large-space;
+   outline: none;
+   padding: $input-spacing;
+   resize: none;
+}
+
+.editor__message {
+  text-align: center;
+  margin: $large-space * 2;
+  font-style: italic;
+}
+//******************************************** end editor ********************************************
+
+//******************************************** sidebar ********************************************
+
+
+.page-content__sidebar {
+  display: none;
+  width: $page-content-sidebar-width;
+  padding-right: $large-space;
+  //apply styles when the browser is larger than the min width
+  @include desktopView{
+    display:flex;
+  }
+
+}
+//******************************************** end sidebar ********************************************
