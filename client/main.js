@@ -54,14 +54,24 @@ Tracker.autorun(() => {
       //this will return undefied or a string
       //if we have a string we want to change the url
       if(selectedNoteId){
+            Session.set('isNavOpen', false);//set the navigation to be closed if you select a note
             history.replace(`/${selectedNoteId}`);
       }
 
 });
 
+Tracker.autorun(() => {
+      const isNavOpen = Session.get('isNavOpen');
+      //switch between true and false based on the isNavOpen value
+      document.body.classList.toggle('is-nav-open', isNavOpen);
+});
+
+
+
 
 //on startup set the selected note to be undefined
 Meteor.startup(() => {
   Session.set('selectedNoteId', undefined);//set session id
+  Session.set('isNavOpen', false);//set the navigation to be closed by default
   ReactDOM.render(routes, document.getElementById('app'));
 });

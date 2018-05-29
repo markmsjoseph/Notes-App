@@ -1,9 +1,19 @@
+
+@mixin desktopView(){
+  //apply styles when the browser is atleast 50rem
+  @media (min-width:50rem){
+    @content
+  }
+
+}
+
 .header {
-  background: $header-bg;
+  background-color: $header-bg;
   color: $header-color;
 }
 
 .header__content {
+  align-items: center;
   display: flex;
   height: $header-height;
   justify-content: space-between;
@@ -14,4 +24,13 @@
 
 .header__title {
   margin: 0;
+}
+.header_nav_toggle{
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+
+  @include desktopView{
+    display:none;
+  }
 }
