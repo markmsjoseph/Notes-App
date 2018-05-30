@@ -11,24 +11,42 @@
   background-color: $header-bg;
   color: $header-color;
 }
-
+.header__logged-in-as{
+  position: absolute;
+    right: 2rem;
+    top: 1rem;
+}
 .header__content {
   align-items: center;
   display: flex;
   height: $header-height;
   justify-content: space-between;
-  max-width: $site-max-width;
+  width: $page-content-main-width;
   margin: 0 auto;
   padding: $space;
 }
 
 .header__title {
+  text-align: center;
+  width:15rem;
+  margin-left: 50px;
+
+  @include desktopView{
+  width: $page-content-main-width;
   margin: 0;
+  }
+
 }
+
+
 .header_nav_toggle{
+
   cursor: pointer;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
+  position: fixed;
+  top: 4%;
+
 
   @include desktopView{
     display:none;

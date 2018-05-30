@@ -18,6 +18,7 @@ padding: $large-space;
   border: 1px solid $grey;
   overflow-y: scroll;
   width: 100%;
+  -webkit-overflow-scrolling:touch;//momuntum scrolling
 }
 
 //******************************************** ITEM ********************************************
@@ -36,16 +37,18 @@ transition: background-color .3s ease, border-left .3s ease;
 
 .item--selected, .item--selected:hover{
   background-color: $light-grey;
-  border-left: $itemBorderWidth solid $brand-primary;
+  border-left: $itemBorderWidth solid $medium-purple;
 }
 
 .item__title{
   font-weight: normal;
   font-size: $base-font-size;
   margin-bottom: .4rem;
+    color:$light-purple;
 }
 
 .item--selected .item__title{
+  color:$medium-purple;
   font-weight: bold;
 }
 

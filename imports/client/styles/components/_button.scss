@@ -16,3 +16,18 @@
   border: 1px solid $button-secondary-border-color;
   color: $button-secondary-color;
 }
+
+
+.button--logout {
+  background-color: $light-purple;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: $base-font-size;
+  line-height: 1.2;
+  padding: 5px;
+  text-transform: uppercase;
+  position: absolute;
+      right: 2rem;
+      top: 4rem;
+}

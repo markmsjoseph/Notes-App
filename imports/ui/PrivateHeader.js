@@ -26,15 +26,16 @@ export class PrivateHeader extends React.Component {
   }
 
   render() {
-    const imageSource = this.props.isNavOpen ? 'images/x.svg' : '/images/bars.svg';
-    return (
-      <div >
-            <img className = "header_nav_toggle" src =  {imageSource} onClick = {this.onImageClick.bind(this)}/>
-            <h1 className = "header__title"> {this.props.title}</h1>
-            <h3 className = "subtitle-bar"> {this.props.subtitle}</h3>
-            <button className = "" onClick={this.onLogout.bind(this)}>Logout</button>
-      </div>
-    );
+            const imageSource = this.props.isNavOpen ? 'images/x.svg' : '/images/bars.svg';
+
+            return (
+                      <div >
+
+                            <img className = "header_nav_toggle" src =  {imageSource} onClick = {this.onImageClick.bind(this)}/>
+                            <h1 className = "header__title"> {this.props.title}</h1>
+                            <button className = "button--logout" onClick={this.onLogout.bind(this)}>Logout</button>
+                      </div>
+            );
   }
 
 

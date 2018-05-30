@@ -39,12 +39,14 @@ export default class Home extends React.Component {
               return (
                   <div>
                         <div className="header">
-                            <div className="header__content">
-                      <PrivateHeader  title="All Notes"  />
-                      <p className = "">Logged in as:{this.state.username} </p>
-                    </div>
-                  </div>
-                      <NoteListMainContainer />
+                                  <div className="header__content">
+                                        <PrivateHeader  title="All Notes"  />
+                                        <p className = "header__logged-in-as">Logged in as:{this.state.username} </p>
+                                  </div>
+                        </div>
+
+                        <NoteListMainContainer />
+
                   </div>
               );
     }
