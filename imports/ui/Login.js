@@ -74,9 +74,9 @@ export default class Login extends React.Component {
     const sess = Session.set('newTest', "loginsess");
     return (
       <div>
-            <Link to ="/" className = "logoutButton">Back to Home</Link>
-                <div className="vertical-center" >
-                      <div className="wrapper wrapper__box wrapper__login-box">
+            <Link to ="/" className = "">Back to Home</Link>
+            <div className="boxed-view">
+    <div className="boxed-view__box">
                             <Tabs defaultIndex={1} onSelect={index => console.log(index)}>
 
                                    <TabList>
@@ -92,7 +92,7 @@ export default class Login extends React.Component {
                                               <br></br>
                                               <input className = 'form-control form-control-lg' type="password" name="password" ref = "myPassword" placeholder= "password"/>
                                               <br></br>
-                                              <button className='submitLogin_register_button btn btn-primary btn-lg'> Login</button>
+                                              <button className='button'> Login</button>
                                           </form>
                                    </TabPanel>
 
@@ -112,7 +112,7 @@ export default class Login extends React.Component {
                                                <input className = 'form-control form-control-lg' type="password" name="password" ref = "myPassword" placeholder= "Password"/>
                                                <br></br>
 
-                                                <button className=' submitLogin_register_button btn btn-primary btn-lg'> Create Account</button>
+                                                <button className=' button'> Create Account</button>
                                          </form>
 
                                   </TabPanel>

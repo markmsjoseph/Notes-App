@@ -1,13 +1,20 @@
-.wrapper__login-box{
-  padding-top: 60px;
-  text-align: center;
-      background: -webkit-linear-gradient(top, #260387 0%,#650dd8 100%);
-      h3{
-        color: orange;
-      }
-
+.boxed-view {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 
+
+.boxed-view__box {
+  background-color: $dark-purple;
+  border: 1px solid $boxed-view-border-color;
+  color: white;
+  padding: 2.4rem;
+  text-align: center;
+  width: 55rem;
+}
 .react-tabs__tab--selected {
     background: orange;
     border-color: #310595;
