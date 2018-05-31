@@ -6,7 +6,7 @@ import {Session} from 'meteor/session';
 
 
 
-export default class Home extends React.Component {
+export default class Dashboard extends React.Component {
 
     constructor(props) {
     super(props);

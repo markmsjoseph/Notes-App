@@ -8,6 +8,7 @@ import {Session} from 'meteor/session';
 import Dashboard from '../imports/ui/Dashboard';
 import NotFound from '../imports/ui/NotFound';
 import Login from '../imports/ui/Login';
+import PublicNotes from '../imports/ui/PublicNotes';
 
 export const history = createHistory();
 
@@ -21,9 +22,10 @@ export const history = createHistory();
 const routes = (
   <Router history={history}>
             <Switch>
+                <Route path="/"  exact={true} render={ (props) => <PublicNotes priavteOrPublic= {"publicRoute"} {...props} />} />
                 <Route path="/signup"  exact={true} render={ (props) => <Login priavteOrPublic= {"publicRoute"} {...props} />} />
-                <Route path="/" exact={true} render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />
-                <Route path="/:id" exact={true} render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />
+                <Route path="/dashboard" exact={true} render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />
+                <Route path="/dashboard/:id" exact={true} render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />
                 <Route path="*" component={NotFound} />
             </Switch>
   </Router>
@@ -38,11 +40,11 @@ Tracker.autorun(() => {
 
       //if you are authenticated but are trying to go to a public page like the login page, redirect them to dashboard page
       if (isAuthenticated && currentPagePrivacy==="publicRoute") {
-        history.push('/');
+        history.push('/dashboard');
       }
         //if not logged in but try to go to a page that needs authentication, send them to login page
       else if (!isAuthenticated &&  currentPagePrivacy==="privateRoute") {
-        history.push('/signup');
+        history.push('/');
       }
 
 });
@@ -55,7 +57,7 @@ Tracker.autorun(() => {
       //if we have a string we want to change the url
       if(selectedNoteId){
             Session.set('isNavOpen', false);//set the navigation to be closed if you select a note
-            history.replace(`/${selectedNoteId}`);
+            history.replace(`/dashboard/${selectedNoteId}`);
       }
 
 });

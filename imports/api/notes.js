@@ -11,7 +11,12 @@ if(Meteor.isServer){
   Meteor.publish('notes', function(){
     //we get the user id because of the this binding from es5 functions, the user calling this publication will have that id
     return Notes.find({userId:this.userId});
-  })
+  });
+  Meteor.publish('publicNotes', function(){
+    //we get the user id because of the this binding from es5 functions, the user calling this publication will have that id
+    return Notes.find({isPublic:true});
+  });
+
 }
 
 Meteor.methods({
@@ -26,7 +31,8 @@ Meteor.methods({
             title:'',
             body:'',
             userId:this.userId,
-            dateAdded:moment().valueOf()
+            dateAdded:moment().valueOf(),
+            isPublic:false
         })
       },
       'notes.update'(_id, updates) {

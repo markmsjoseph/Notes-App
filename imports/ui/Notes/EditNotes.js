@@ -5,6 +5,7 @@ import { Session } from 'meteor/session';
 import { Meteor } from 'meteor/meteor';
 import { Notes } from '../../api/notes';
 import { history } from '../../../client/main.js';
+import Modal from 'react-modal';
 
 export  class Editor extends React.Component {
 
@@ -12,7 +13,8 @@ export  class Editor extends React.Component {
        super(props);
         this.state={
          title:'',
-         body:''
+         body:'',
+         isOpen:false
         }
      }
 
@@ -46,40 +48,106 @@ export  class Editor extends React.Component {
       this.setState({title});
       this.props.call('notes.update', this.props.note._id, {title});
     }
+    //
+    // saveNote =(e)=> {
+    //
+    //   const title = this.refs.titleRef.value;
+    //   const body = this.refs.bodyRef.value;
+    //   e.preventDefault();
+    //
+    //   this.setState({title:title,body:body});
+    //   this.props.call('notes.update', this.props.note._id, {title,body});
+    //   }
 
   deleteNote = ()=>{
       this.props.call('notes.delete', this.props.note._id);
       //fixes error where when u delete a note the browser url still shows the note id
       this.props.history.replace('/dashboard');
       Session.set('selectedNoteId', '');
+      console.log("deletenote clicked");
 
   }
+
+  makeNotePublic = ()=>{
+    if(this.props.note.isPublic){
+          this.setState({isOpen:false});
+          this.props.call('notes.update', this.props.note._id, {isPublic:false});
+    }
+    else{
+          this.setState({isOpen:false});
+          this.props.call('notes.update', this.props.note._id, {isPublic:true});
+    }
+  }
+
+  componentWillMount() {
+      Modal.setAppElement('body');
+  }
+
 
   render(){
+    console.log("REndering");
+        //if there is a note
         if (this.props.note) {
-            return (
-                <div className="editor">
-                <input className = "editor__title" value={this.state.title} placeholder="Untitled Note" onChange={this.handleTitleChange}/>
-                <textarea className = "editor__body" value={this.state.body} placeholder="Your note here" onChange={this.handleBodyChange}></textarea>
-                <button className = "button button--secondary"onClick={this.deleteNote}>Delete Note</button>
-              </div>
-            );
+              //if the note is already public we want to set it to private
+              if(this.props.note.isPublic){
+                    return (
+                            <div className="editor">
+                                    <input className = "editor__title" value={this.state.title} ref="titleRef" placeholder="Untitled Note" onChange={this.handleTitleChange}/>
+                                    <textarea className = "editor__body" value={this.state.body} ref="bodyRef" placeholder="Your note here" onChange={this.handleBodyChange}></textarea>
+{/* 
+                                <button className='button button--secondary delete-button' onClick={this.saveNote.bind(this)}>Save Note</button> */}
+                                <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete Note</button>
+
+                                    <button className = "button button--secondary delete-button" onClick={()=>this.setState({isOpen:true})}>Make Note Private</button>
+                                    <Modal isOpen = {this.state.isOpen} contentLabel="ApproveNote">
+                                          <p>Are you sure you want to make this note private?</p>
+                                          <button onClick={this.makeNotePublic.bind(this)}>Approve Note </button>
+                                          <button onClick={()=>this.setState({isOpen:false})}>Cancel </button>
+                                    </Modal>
+
+                          </div>
+                    );
+              }
+              //the note is private currently, so we want to make it public
+              else{
+                    return (
+                            <div className="editor">
+                                    <input className = "editor__title" value={this.state.title} placeholder="Untitled Note" onChange={this.handleTitleChange}/>
+                                    <textarea className = "editor__body" value={this.state.body} placeholder="Your note here" onChange={this.handleBodyChange}></textarea>
+
+                                    <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete Note</button>
+
+                                    <button className = "button button--secondary delete-button" onClick={()=>this.setState({isOpen:true})}>Make Note Public</button>
+                                    <Modal isOpen = {this.state.isOpen} contentLabel="ApproveNote">
+                                          <p>Are you sure you want to publicize this note? This means that it will be available to other people to view. </p>
+                                          <button onClick={this.makeNotePublic.bind(this)}>Approve Note </button>
+                                          <button onClick={()=>this.setState({isOpen:false})}>Cancel </button>
+                                    </Modal>
+
+                          </div>
+                    );
+              }
+
         }
+
+        //no note selected
         else {
-            return (
-                <div className="editor">
-              <p className = "empty-item">
-                { this.props.selectedNoteId ? 'Note not found.' : 'Pick or create a note to get started.'}
-              </p>
-            </div>
-            );
+                return (
+                    <div className="editor">
+                              <p className = "empty-item">
+                                { this.props.selectedNoteId ? 'Note not found.' : 'Pick or create a note to get started.'}
+                              </p>
+                    </div>
+                );
         }
   }
 
-
-
-
 };//endclass
+
+
+
+
+
 
 
 export default createContainer(() => {
@@ -87,7 +155,7 @@ export default createContainer(() => {
 
   return {
     selectedNoteId:selectedNoteId,
-    note: Notes.findOne(selectedNoteId),
+    note:Notes.findOne(selectedNoteId),
     call: Meteor.call,
     history:history
   };

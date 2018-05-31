@@ -55,3 +55,6 @@ $purple:#6924c4;
   padding: 20px;
 
  }
+ .ReactModal__Overlay.ReactModal__Overlay--after-open{
+   z-index: 999;
+ }
