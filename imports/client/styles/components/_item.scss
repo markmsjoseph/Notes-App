@@ -59,11 +59,9 @@ transition: background-color .3s ease, border-left .3s ease;
 
 //******************************************** PUBLIC ITEM ********************************************
 .public-item{
-  display: inline-block;
-  border: 1px solid purple;
   padding: 20px;
   margin: 30px;
-  width: 300px;
-  height: 400px;
+  width: 500px;
+  height: 200px;
   overflow-y: scroll;
 }

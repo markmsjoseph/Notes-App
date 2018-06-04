@@ -22,7 +22,7 @@ export const history = createHistory();
 const routes = (
   <Router history={history}>
             <Switch>
-                <Route path="/"  exact={true} render={ (props) => <PublicNotes priavteOrPublic= {"publicRoute"} {...props} />} />
+                <Route path="/"  exact={true} render={ (props) => <PublicNotes priavteOrPublic= {"privateRoute"} {...props} />} />
                 <Route path="/signup"  exact={true} render={ (props) => <Login priavteOrPublic= {"publicRoute"} {...props} />} />
                 <Route path="/dashboard" exact={true} render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />
                 <Route path="/dashboard/:id" exact={true} render={ (props) => <Dashboard priavteOrPublic= {"privateRoute"} {...props} />} />

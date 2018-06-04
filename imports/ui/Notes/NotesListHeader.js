@@ -9,7 +9,7 @@ export const NoteListHeader = (props) => {
 
   const createNoteClicked =()=>{
       console.log("Create Note Clicked from noteListHeader");
-      props.meteorCall('notes.insert', (err, res) => {
+      props.meteorCall('notes.insert',[props.username], (err, res) => {
 
         //new note id will be available in res object
         if(res){
@@ -33,6 +33,7 @@ export const NoteListHeader = (props) => {
 
 export default createContainer(() => {
   return {
+      username:Meteor.user() != undefined ? Meteor.user().username : 'undefined',
     meteorCall: Meteor.call,
     Session
   };

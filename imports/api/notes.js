@@ -20,7 +20,7 @@ if(Meteor.isServer){
 }
 
 Meteor.methods({
-      'notes.insert'(){
+      'notes.insert'(array){
         //if there is no user, you cannot insert a note
         if(!this.userId){
           throw new Meteor.Error('not authorized');
@@ -32,9 +32,13 @@ Meteor.methods({
             body:'',
             userId:this.userId,
             dateAdded:moment().valueOf(),
-            isPublic:false
+            isPublic:false,
+            comments:[],
+            postedBy:array[0]
         })
       },
+
+
       'notes.update'(_id, updates) {
         if (!this.userId) {
           throw new Meteor.Error('not-authorized');
@@ -50,6 +54,8 @@ Meteor.methods({
 
         });
       },
+
+
       'notes.delete'(id){
         //if there is no user, you cannot insert a note
         if(!this.userId){
@@ -59,6 +65,17 @@ Meteor.methods({
         Notes.remove({
           _id:id
         })
-      }
+      },
+
+      //takes in the id of the note we are editing, and from that we push comments to the comments array 
+      'notes.updateComments'(_id, data){
+        if(!this.userId){
+          throw new Meteor.Error('not authorized');
+        }
+        console.log("ADDING:", _id, " AND ", data);
+        Notes.update({_id},
+        {$push:{comments :data}}
+        )
+      },
 
     });
