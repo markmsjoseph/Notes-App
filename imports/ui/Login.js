@@ -74,7 +74,7 @@ export default class Login extends React.Component {
     const sess = Session.set('newTest', "loginsess");
     return (
       <div>
-            <Link to ="/" className = "">Back to Home</Link>
+        
             <div className="boxed-view">
     <div className="boxed-view__box">
                             <Tabs defaultIndex={1} onSelect={index => console.log(index)}>

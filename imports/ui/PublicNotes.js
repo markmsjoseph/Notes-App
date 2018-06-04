@@ -21,20 +21,6 @@ export class PublicNotes extends React.Component {
     }
 
 
-    addComment(idOfNote, e) {
-      e.preventDefault();
-      console.log("ID", idOfNote);
-
-      //get the comment and trim of all unnecessary spaces
-      let newComment = this.refs.commentRef.value;
-        console.log("COMMENT" , newComment);
-      //combine comment and the username of the poster into 1
-      // let userAndMessage = {message:newComment, yourId:this.props.username};
-      // console.log(userAndMessage);
-      //this.props.meteorCall('notes.updateComments', idOfNote, {userAndMessage});
-      }
-
-
 
     render() {
       console.log(this.props.notes);
@@ -42,7 +28,7 @@ export class PublicNotes extends React.Component {
           <div>
                 <div className="header">
                           <div className="header__content">
-                                <PrivateHeader  title="All Notes" subtitle="To post your own note, you must register and login"  />
+                                <PrivateHeader  title="All Notes"   />
 
                           </div>
 
@@ -54,6 +40,18 @@ export class PublicNotes extends React.Component {
                     <h2>{note.title}</h2>
                     <p>Posted By {note.postedBy}</p>
                     <p>{note.body}</p>
+
+
+                  COMMENTS:{note.comments.map((comment)=>{
+                                                              return <div>
+                                                                              <p className = "">{comment.userAndMessage.yourId} says:</p>
+                                                                                <p className = "">Comment: {comment.userAndMessage.message} </p>
+
+                                                                  </div>
+                                                  })
+                                                }
+
+
                     <CommentComponent id={note._id}/>
                     </div>
 

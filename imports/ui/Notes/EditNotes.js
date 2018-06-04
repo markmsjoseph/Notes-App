@@ -85,6 +85,7 @@ export  class Editor extends React.Component {
 
 
   render(){
+        console.log("MATCH:", this.props.match);
     console.log("REndering");
         //if there is a note
         if (this.props.note) {
@@ -94,7 +95,7 @@ export  class Editor extends React.Component {
                             <div className="editor">
                                     <input className = "editor__title" value={this.state.title} ref="titleRef" placeholder="Untitled Note" onChange={this.handleTitleChange}/>
                                     <textarea className = "editor__body" value={this.state.body} ref="bodyRef" placeholder="Your note here" onChange={this.handleBodyChange}></textarea>
-{/* 
+{/*
                                 <button className='button button--secondary delete-button' onClick={this.saveNote.bind(this)}>Save Note</button> */}
                                 <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete Note</button>
 
