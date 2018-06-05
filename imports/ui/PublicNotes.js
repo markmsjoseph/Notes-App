@@ -13,16 +13,30 @@ export class PublicNotes extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state={
+         isActive:false
+        }
     }
 
     componentWillMount() {
         //set the global session variable currentPagePrivacy to the value that was passed in as props from the route component in main.js
         Session.set('currentPagePrivacy', this.props.priavteOrPublic);//set session id
     }
-
-
+    //
+    // accordianToggle(){
+    //   console.log("Toggle Clicked");
+    //   if(this.state.isActive){
+    //         this.setState({isActive:false});
+    //   }
+    //   else{
+    //           this.setState({isActive:true});
+    //         this.props.call('notes.update', this.props.note._id, {isPublic:true});
+    //   }
+    // }
+  //{this.state.isActive ? <button className="accordion-active" onClick={this.accordianToggle.bind(this)}>View Comments</button> : <button className="accordion" onClick={this.accordianToggle.bind(this)}>View Comments</button>}
 
     render() {
+
       return (
         <div>
               <div className="header">
@@ -40,16 +54,19 @@ export class PublicNotes extends React.Component {
                                             <p>Posted By {note.postedBy}</p>
                                             <p>{note.body}</p>
 
-                                            COMMENTS:{note.comments.map((comment)=>{
-                                              return <div className="comment">
-                                                <p className = "comment-user">{comment.userAndMessage.yourId} says:</p>
-                                                <p className = "comment-message"> {comment.userAndMessage.message} </p>
+                                            <div class="comment">
+                                                    COMMENTS:{note.comments.map((comment)=>{
+                                                      return <div className="comment">
+                                                                  <p className = "comment-user">{comment.userAndMessage.yourId} says:</p>
+                                                                  <p className = "comment-message"> {comment.userAndMessage.message} </p>
 
-                                              </div>
-                                            })
-                                          }
+                                                            </div>
+                                                    })
+                                                      }
+
 
                                           <CommentComponent id={note._id}/>
+                                            </div>
                                       </div>
                             </div>
                           );

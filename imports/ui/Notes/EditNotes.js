@@ -85,8 +85,7 @@ export  class Editor extends React.Component {
 
 
   render(){
-        console.log("MATCH:", this.props.match);
-    console.log("REndering");
+
         //if there is a note
         if (this.props.note) {
               //if the note is already public we want to set it to private

@@ -87,6 +87,38 @@
 
 }
 
+.page-content__sidebar-menu {
+
+  width:100vw;
+  position:fixed;
+  top:$header-height;
+  left: -100vw;
+  transition: left .3s ease;
+  bottom: 0;
+  z-index: 1;
+
+  //apply styles when the browser is larger than the min width
+  @include desktopView{
+    position: static;
+    left:0;
+    
+    color:red;
+    display: block;
+    width: 100vw;
+    padding-right: $large-space;
+  }
+
+}
+
+//if the nav is open when we expand to desktop mode, we change the isopen styles to suit desktop view
+.is-nav-open .page-content__sidebar-menu{
+
+    left:0;
+    @include desktopView{
+    display: block;
+    width: 100vw;
+    }
+}
 //if there is the class is-nav-open present, style the sidebar, if is-nav-open never exist, the styles will never be applieds
 .is-nav-open .page-content__sidebar{
     left:0;
