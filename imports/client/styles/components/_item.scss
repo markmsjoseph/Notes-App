@@ -92,6 +92,8 @@
   padding-bottom: 30px;
       margin: 60px 0px 40px 0px;
       border: 3px solid #615f5f;
+      padding-left: 5px;
+padding-right: 5px;
   @include smallestPhoneSizes{
 
   }
@@ -134,6 +136,18 @@
 
   }
 }
+.noteBody{
+  font-family: cursive;
+}
+.notePostedBy{
+  text-align: right;
+  font-family: monospace;
+  font-weight: 900;
+  font-size: 12px;
+      color: #7f39fb;
+}
+
+
 
 //******************************************** COMMENTS ITEM ********************************************
 .comment{
@@ -161,7 +175,11 @@
   width: 100%;
 }
 .comment-form{
-
+  margin-bottom: 50px;
+      background-color: #fafafa;
+      /* border: solid #d8d7d7; */
+      height: 130px;
+      padding: 10px;
 }
 .display-comments{
   background-color: red;
@@ -169,8 +187,6 @@
 .hide-comments{
   display: none;
 }
-
-
 
 
 

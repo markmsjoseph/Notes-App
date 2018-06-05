@@ -74,12 +74,13 @@ export default class Login extends React.Component {
     const sess = Session.set('newTest', "loginsess");
     return (
       <div>
-        
+
             <div className="boxed-view">
     <div className="boxed-view__box">
                             <Tabs defaultIndex={1} onSelect={index => console.log(index)}>
 
                                    <TabList>
+                                     <h1> Welcome to the poerty app</h1>
                                      <Tab>Login</Tab>
                                      <Tab>Register</Tab>
                                    </TabList>

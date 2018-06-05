@@ -44,10 +44,10 @@ export class PrivateHeader extends React.Component {
                               this.props.history.location.pathname === "/allnotes"
                               ?
                                   <div className="page-content__sidebar-menu">
-                                      <h3 className = "header__links"> <Link to ="/allnotes">All Public Notes</Link> |   <Link to ="/dashboard" >Dashboard</Link></h3>
+                                      <h3 className = "header__links">   <Link to ="/dashboard" className="header-navs">Back to Dashboard</Link></h3>
                                   </div>
                               :
-                                  <h3 className = "header__links"> <Link to ="/allnotes">All Public Notes</Link> |   <Link to ="/dashboard" >Dashboard</Link></h3>
+                                  <h3 className = "header__linksAllPoems"> <Link to ="/allnotes">View Public Poems</Link> </h3>
                             }
 
 

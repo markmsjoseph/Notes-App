@@ -20,6 +20,7 @@ export default class Dashboard extends React.Component {
         //set the global session variable currentPagePrivacy to the value that was passed in as props from the route component in main.js
         Session.set('currentPagePrivacy', this.props.priavteOrPublic);//set session id
         Session.set('selectedNoteId', undefined);//set session id
+          Session.set('isNavOpen', false);
       history.replace("/dashboard");
 
     }
@@ -43,7 +44,7 @@ export default class Dashboard extends React.Component {
                   <div>
                         <div className="header">
                                   <div className="header__content">
-                                        <PrivateHeader  title="All Notes"  />
+                                        <PrivateHeader  title="Poetry App"  />
                                         <p className = "header__logged-in-as">Logged in as:{this.state.username} </p>
                                   </div>
                         </div>

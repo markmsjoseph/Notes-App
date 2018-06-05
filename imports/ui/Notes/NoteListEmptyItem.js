@@ -6,7 +6,7 @@ const NoteListEmptyItem = () => {
   return (
    <div className = " ">
 
-      <p className = "empty-item">Create a note to get started!</p>
+      <p className = "empty-item">Create a poem to get started!</p>
     </div>
   );
 };

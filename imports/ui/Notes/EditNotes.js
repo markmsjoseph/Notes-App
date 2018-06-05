@@ -97,13 +97,13 @@ export  class Editor extends React.Component {
 {/*
                                 <button className='button button--secondary delete-button' onClick={this.saveNote.bind(this)}>Save Note</button> */}
                                 <div className="editButtons">
-                                <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete Note</button>
+                                <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete poem</button>
 
-                                    <button className = "button button--secondary delete-button" onClick={()=>this.setState({isOpen:true})}>Make Note Private</button>
+                                    <button className = "button button--secondary delete-button" onClick={()=>this.setState({isOpen:true})}>Make poem private</button>
                                   </div>
                                     <Modal isOpen = {this.state.isOpen} contentLabel="ApproveNote">
-                                          <p>Are you sure you want to make this note private?</p>
-                                          <button onClick={this.makeNotePublic.bind(this)}>Approve Note </button>
+                                          <p>Do you want to make this poem private?</p>
+                                          <button onClick={this.makeNotePublic.bind(this)}>Make private </button>
                                           <button onClick={()=>this.setState({isOpen:false})}>Cancel </button>
                                     </Modal>
 
@@ -117,12 +117,12 @@ export  class Editor extends React.Component {
                                     <input className = "editor__title" value={this.state.title} placeholder="Untitled Note" onChange={this.handleTitleChange}/>
                                     <textarea className = "editor__body" value={this.state.body} placeholder="Your note here" onChange={this.handleBodyChange}></textarea>
                                     <div className = "editButtons">
-                                        <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete Note</button>
+                                        <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete poem</button>
 
-                                        <button className = "button button--secondary delete-button" onClick={()=>this.setState({isOpen:true})}>Make Note Public</button>
+                                        <button className = "button button--secondary delete-button" onClick={()=>this.setState({isOpen:true})}>Make poem public</button>
                                   </div>
                                     <Modal isOpen = {this.state.isOpen} contentLabel="ApproveNote">
-                                          <p>Are you sure you want to publicize this note? This means that it will be available to other people to view. </p>
+                                          <p>Are you sure you want to publicize this poem? This means that all other users can read it </p>
                                           <button onClick={this.makeNotePublic.bind(this)}>Approve Note </button>
                                           <button onClick={()=>this.setState({isOpen:false})}>Cancel </button>
                                     </Modal>
@@ -138,7 +138,7 @@ export  class Editor extends React.Component {
                 return (
                     <div className="editor">
                               <p className = "empty-item">
-                                { this.props.selectedNoteId ? 'Note not found.' : 'Pick or create a note to get started.'}
+                                { this.props.selectedNoteId ? 'Poem not found.' : 'Pick or create a poem to get started.'}
                               </p>
                     </div>
                 );

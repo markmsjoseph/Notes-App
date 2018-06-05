@@ -7,6 +7,7 @@ import {Session} from 'meteor/session';
 import { createContainer } from 'meteor/react-meteor-data';
 import {Notes} from '../api/notes';
 import CommentComponent from './CommentComponent';
+import Accordian from './Accordian';
 
 
 export class PublicNotes extends React.Component {
@@ -22,18 +23,6 @@ export class PublicNotes extends React.Component {
         //set the global session variable currentPagePrivacy to the value that was passed in as props from the route component in main.js
         Session.set('currentPagePrivacy', this.props.priavteOrPublic);//set session id
     }
-    //
-    // accordianToggle(){
-    //   console.log("Toggle Clicked");
-    //   if(this.state.isActive){
-    //         this.setState({isActive:false});
-    //   }
-    //   else{
-    //           this.setState({isActive:true});
-    //         this.props.call('notes.update', this.props.note._id, {isPublic:true});
-    //   }
-    // }
-  //{this.state.isActive ? <button className="accordion-active" onClick={this.accordianToggle.bind(this)}>View Comments</button> : <button className="accordion" onClick={this.accordianToggle.bind(this)}>View Comments</button>}
 
     render() {
 
@@ -51,12 +40,15 @@ export class PublicNotes extends React.Component {
                               <div>
                                       <div className="public-item">
                                             <h2>{note.title}</h2>
-                                            <p>Posted By {note.postedBy}</p>
-                                            <p>{note.body}</p>
+                                            <p className="noteBody">{note.body}</p>
+                                            <p className="notePostedBy">Posted By {note.postedBy}</p>
 
-                                            <div class="comment">
-                                                    COMMENTS:{note.comments.map((comment)=>{
+                                            <div className="comment">
+                                                <Accordian title="View All Comments">
+                                                    <CommentComponent id={note._id}/>
+                                                  {note.comments.reverse().map((comment)=>{
                                                       return <div className="comment">
+
                                                                   <p className = "comment-user">{comment.userAndMessage.yourId} says:</p>
                                                                   <p className = "comment-message"> {comment.userAndMessage.message} </p>
 
@@ -64,9 +56,12 @@ export class PublicNotes extends React.Component {
                                                     })
                                                       }
 
+                                                       </Accordian>
 
-                                          <CommentComponent id={note._id}/>
+
+
                                             </div>
+
                                       </div>
                             </div>
                           );

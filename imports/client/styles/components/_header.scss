@@ -89,11 +89,10 @@
 
 }
 
-
-.header__links{
-
+.header__linksAllPoems{
   text-align: center;
   position: absolute;
+  background-color: white;
 
   @include smallestPhoneSizes{
 
@@ -101,8 +100,8 @@
 
     a{
       font-size:12px;
-      padding: 20px;
-      margin: 10px;
+
+
 
     }
   }
@@ -132,10 +131,64 @@
     text-align: center;
     position:inherit;
     color: white;
+    background-color: $medium-purple;
 
     a{
       color: white;
-      padding: 20px;
+
+    }
+  }
+}
+
+
+.header__links{
+
+  text-align: center;
+  position: absolute;
+  background-color: $medium-purple;
+
+  @include smallestPhoneSizes{
+
+    width:100%;
+
+    a{
+      font-size:12px;
+
+
+
+    }
+  }
+
+  @include mediumSizedPhones{
+
+    width:100%;
+    padding: 10px;
+
+    a{
+      font-size:22px;
+    }
+  }
+
+  @include tablets{
+
+    width:100%;
+    padding: 10px;
+    a{
+      font-size:24px;
+    }
+  }
+
+
+  @include desktopView{
+    right: 25rem;
+    text-align: center;
+    position:inherit;
+    color: white;
+    background-color: none;
+
+    a{
+      color: white;
+
     }
   }
 
@@ -157,22 +210,18 @@
   }
 }
 
-// .menu-links{
-  // width: 100%;
-  // padding: 20px;
-  // background-color: $medium-purple;
-  // line-height: 40px;
-  // a{
-  //   color: white;
-  // }
-  //
-  // @include desktopView{
-  //   padding: 10px;
-  //   background-color: white;
-  //   line-height: 0px;
-  //   a{
-  //     color: $medium-purple;
-  //   }
-  // }
+.header-navs{
+  width: 100%;
+  background-color: $medium-purple;
+  color: white;
 
-// }
+  @include desktopView{
+    background-color: $medium-purple;
+
+    a{
+      color: white;
+
+    }
+  }
+
+}

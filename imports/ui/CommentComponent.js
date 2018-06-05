@@ -22,10 +22,13 @@ export class CommentComponent extends React.Component {
       let newComment = this.state.body;
       // console.log("COMMENT" , newComment);
       //combine comment and the username of the poster into 1
-      let userAndMessage = {message:newComment, yourId:this.props.username};
-      console.log(userAndMessage);
-      this.props.meteorCall('notes.updateComments', this.props.id, {userAndMessage});
-
+      if(newComment!=''){
+        let userAndMessage = {message:newComment, yourId:this.props.username};
+        console.log(userAndMessage);
+        this.props.meteorCall('notes.updateComments', this.props.id, {userAndMessage});
+      }
+        this.setState({body:''});
+        e.target.reset();
   }
 
   //everytime the input changes, set the changes to the state
@@ -39,9 +42,9 @@ export class CommentComponent extends React.Component {
   render(){
           return (
             <div className="comment-form">
-                      <form >
+                      <form onSubmit={this.addComment}>
                             <textarea className = "comment-textbox" placeholder="Add a comment" onChange={this.handleChange}></textarea>
-                            <button className='button-comment'  onClick={this.addComment}>Add Comment </button>
+                            <button className='button-comment'  >Add Comment </button>
 
                       </form>
                 </div>
