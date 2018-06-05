@@ -23,44 +23,40 @@ export class PublicNotes extends React.Component {
 
 
     render() {
-      console.log(this.props.notes);
       return (
-          <div>
-                <div className="header">
-                          <div className="header__content">
-                                <PrivateHeader  title="All Notes"   />
-
-                          </div>
-
-                </div>
-                {this.props.notes.map((note) => {
-                  return(
-                    <div>
-                    <div className="public-item">
-                    <h2>{note.title}</h2>
-                    <p>Posted By {note.postedBy}</p>
-                    <p>{note.body}</p>
-
-
-                  COMMENTS:{note.comments.map((comment)=>{
-                                                              return <div>
-                                                                              <p className = "">{comment.userAndMessage.yourId} says:</p>
-                                                                                <p className = "">Comment: {comment.userAndMessage.message} </p>
-
-                                                                  </div>
-                                                  })
-                                                }
-
-
-                    <CommentComponent id={note._id}/>
+        <div>
+              <div className="header">
+                    <div className="header__content">
+                      <PrivateHeader  title="All Notes"   />
                     </div>
+              </div>
 
-                  <p>Notes You Posted</p>
-                </div>
-                  );
-                })}
-          </div>
-      );
+              <div className="public_item_container">
+                          {this.props.notes.map((note) => {
+                            return(
+                              <div>
+                                      <div className="public-item">
+                                            <h2>{note.title}</h2>
+                                            <p>Posted By {note.postedBy}</p>
+                                            <p>{note.body}</p>
+
+                                            COMMENTS:{note.comments.map((comment)=>{
+                                              return <div className="comment">
+                                                <p className = "comment-user">{comment.userAndMessage.yourId} says:</p>
+                                                <p className = "comment-message"> {comment.userAndMessage.message} </p>
+
+                                              </div>
+                                            })
+                                          }
+
+                                          <CommentComponent id={note._id}/>
+                                      </div>
+                            </div>
+                          );
+                        })}
+              </div>
+      </div>
+    );
     }
 
 }

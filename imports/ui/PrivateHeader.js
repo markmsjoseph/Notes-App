@@ -38,8 +38,8 @@ export class PrivateHeader extends React.Component {
 
                             <img className = "header_nav_toggle" src =  {imageSource} onClick = {this.onImageClick.bind(this)}/>
                             <h1 className = "header__title"> {this.props.title}</h1>
-                         <h3 className = "header__title"> <Link to ="/allnotes">All Public Notes</Link></h3>
-                           <h3 className = "header__title"> <Link to ="/dashboard">Dashboard</Link></h3>
+                         <h3 className = "header__links"> <Link to ="/allnotes">All Public Notes</Link> |   <Link to ="/dashboard" >Dashboard</Link></h3>
+
                               <h3 className = "header__title"> {this.props.subtitle}</h3>
                               { this.props.history.location.pathname === "/" ? <Link to ="/signup" className = "button--logout">Login Or Signup</Link> : <button className = "button--logout" onClick={this.onLogout.bind(this)}>Logout</button> }
                       </div>

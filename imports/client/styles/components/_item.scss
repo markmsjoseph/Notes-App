@@ -15,7 +15,7 @@ padding: $large-space;
 //******************************************** ITEM LIST ********************************************
 .item-list {
   background-color: white;
-  border: 1px solid $grey;
+  border: 3px solid #7f39fb;
   overflow-y: scroll;
   width: 100%;
   -webkit-overflow-scrolling:touch;//momuntum scrolling
@@ -61,7 +61,38 @@ transition: background-color .3s ease, border-left .3s ease;
 .public-item{
   padding: 20px;
   margin: 30px;
-  width: 500px;
-  height: 200px;
-  overflow-y: scroll;
+  /* width: 500px; */
+  /* height: 200px; */
+  /* overflow-y: scroll; */
+  border: 3px solid;
+}
+.public_item_container{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+//******************************************** COMMENTS ITEM ********************************************
+.comment{
+  background-color: #efefef;
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #bfbfbf;
+}
+.comment-user{
+  color: #6200ee;
+    text-align: left;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+
+.comment-message{
+  text-align: left;
+      font-family: cursive;
+}
+.comment-textbox{
+  width: 100%;
+}
+.comment-form{
+
 }

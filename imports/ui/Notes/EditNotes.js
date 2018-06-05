@@ -97,9 +97,11 @@ export  class Editor extends React.Component {
                                     <textarea className = "editor__body" value={this.state.body} ref="bodyRef" placeholder="Your note here" onChange={this.handleBodyChange}></textarea>
 {/*
                                 <button className='button button--secondary delete-button' onClick={this.saveNote.bind(this)}>Save Note</button> */}
+                                <div className="editButtons">
                                 <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete Note</button>
 
                                     <button className = "button button--secondary delete-button" onClick={()=>this.setState({isOpen:true})}>Make Note Private</button>
+                                  </div>
                                     <Modal isOpen = {this.state.isOpen} contentLabel="ApproveNote">
                                           <p>Are you sure you want to make this note private?</p>
                                           <button onClick={this.makeNotePublic.bind(this)}>Approve Note </button>
@@ -115,10 +117,11 @@ export  class Editor extends React.Component {
                             <div className="editor">
                                     <input className = "editor__title" value={this.state.title} placeholder="Untitled Note" onChange={this.handleTitleChange}/>
                                     <textarea className = "editor__body" value={this.state.body} placeholder="Your note here" onChange={this.handleBodyChange}></textarea>
+                                    <div className = "editButtons">
+                                        <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete Note</button>
 
-                                    <button className='button button--secondary delete-button' onClick={this.deleteNote.bind(this)}>Delete Note</button>
-
-                                    <button className = "button button--secondary delete-button" onClick={()=>this.setState({isOpen:true})}>Make Note Public</button>
+                                        <button className = "button button--secondary delete-button" onClick={()=>this.setState({isOpen:true})}>Make Note Public</button>
+                                  </div>
                                     <Modal isOpen = {this.state.isOpen} contentLabel="ApproveNote">
                                           <p>Are you sure you want to publicize this note? This means that it will be available to other people to view. </p>
                                           <button onClick={this.makeNotePublic.bind(this)}>Approve Note </button>

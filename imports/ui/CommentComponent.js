@@ -38,11 +38,13 @@ export class CommentComponent extends React.Component {
 
   render(){
           return (
-                  <form >
-                        <textarea className = "" placeholder="WriteComment" onChange={this.handleChange}></textarea>
-                        <button className='addPost__form__Submit'  onClick={this.addComment}>Add Comment </button>
+            <div className="comment-form">
+                      <form >
+                            <textarea className = "comment-textbox" placeholder="Add a comment" onChange={this.handleChange}></textarea>
+                            <button className='button-comment'  onClick={this.addComment}>Add Comment </button>
 
-                  </form>
+                      </form>
+                </div>
         );
   };
 

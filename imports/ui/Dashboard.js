@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PrivateHeader from './PrivateHeader';
 import NoteListMainContainer from './Notes/NoteListMainContainer';
 import {Session} from 'meteor/session';
+import { history } from '../../client/main.js';
 
 
 
@@ -18,8 +19,10 @@ export default class Dashboard extends React.Component {
     componentWillMount() {
         //set the global session variable currentPagePrivacy to the value that was passed in as props from the route component in main.js
         Session.set('currentPagePrivacy', this.props.priavteOrPublic);//set session id
-    }
+        Session.set('selectedNoteId', undefined);//set session id
+      history.replace("/dashboard");
 
+    }
 
     componentDidMount() {
       this.postTracker =  Tracker.autorun(() => {

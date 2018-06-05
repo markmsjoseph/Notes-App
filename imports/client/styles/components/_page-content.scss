@@ -22,7 +22,7 @@
 .page-content__main {
   display: flex;
   width: $page-content-main-width;
-  background-color: green;
+
 
 }
 
@@ -33,6 +33,7 @@
   display: flex;
   flex-direction: column;
   padding: $large-space;
+  margin: 10px;
 
 }
 
