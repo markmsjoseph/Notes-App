@@ -1,7 +1,5 @@
-# Meteor Boilerplate
+# Poetry App
 
 ## Mark Joseph
 
-### Contains login & register page
-### Has homepage at "/"
-### Contains sass styling as well as error checking for routes and authentication  
+### Users must login where they can create new poems. Users can make poems publicly visable to other users. Once a poem is public users can comment on poems
