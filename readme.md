@@ -1,4 +1,4 @@
-# Poetry App
+# Poetry App - Built using react.js and meteor
 
 ## Mark Joseph
 
