@@ -9,7 +9,8 @@
 }
 
 .boxed-view__box {
-background: -webkit-linear-gradient(top, #101010 0%, rgba(0, 0, 0, 0.91) 8%, rgba(10, 22, 51, 0.86) 42%, rgba(0, 17, 39, 0.93) 86%, rgba(5, 27, 45, 0.82) 100%), url(images/image1.jpg);
+
+background: -webkit-linear-gradient(top, #010054 0%, rgba(1, 0, 82, 0.9) 8%, rgba(6, 36, 109, 0.86) 42%, rgba(0, 27, 88, 0.93) 86%, rgba(0, 11, 53, 0.93) 100%), url(images/image1.jpg);
   background-repeat: no-repeat;
   background-size: 700px 500px;
   color: white;
@@ -126,7 +127,7 @@ input:-webkit-autofill {
 }
 
 .react-tabs__tab--selected {
-  background: $lightpeach;
+  background: #2035a2;
       /* border-color: #aaa; */
       color: white !important;
 }
