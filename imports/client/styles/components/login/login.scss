@@ -1,46 +1,118 @@
+
 .boxed-view {
   align-items: center;
   display: flex;
   justify-content: center;
   height: 100vh;
   width: 100vw;
+
 }
 
-
 .boxed-view__box {
-  background-color: $dark-purple;
-  border: 1px solid $boxed-view-border-color;
+background: -webkit-linear-gradient(top, #101010 0%, rgba(0, 0, 0, 0.91) 8%, rgba(10, 22, 51, 0.86) 42%, rgba(0, 17, 39, 0.93) 86%, rgba(5, 27, 45, 0.82) 100%), url(images/image1.jpg);
+  background-repeat: no-repeat;
+  background-size: 700px 500px;
   color: white;
   padding: 2.4rem;
   text-align: center;
+  height: 500px;
+  width: 400px;
 
 }
-.react-tabs__tab--selected {
-    background: orange;
-    border-color: #310595;
-    color: white;
-    border-radius: 5px 5px 0 0;
+
+.formHeader{
+  margin:30px;
 }
 
+.chatAppHeader{
+  font-weight: 560;
+  font-size: 2.4rem;
+  margin-top: 27px;
+}
+
+.inputLoginFormStyles{
+  text-align: center;
+  color: #ffffff ;
+  background-color: #fff0 !important;
+  background-clip: padding-box !important;
+  border: 0px;
+    border-bottom: 1px solid;
+}
+
+#myInput::-webkit-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ffffff82;
+}
+
+.glyphicon{
+  color:#ffffff59;
+}
+
+
+.glyphicon-lock:before{
+  padding: 10px;
+  position: absolute;
+  top: -5%;
+}
+
+.glyphicon-user:before{
+  padding: 10px;
+  position: absolute;
+  top: -5%;
+}
+
+.glyphicon-envelope:before{
+  padding: 10px;
+  position: absolute;
+  top: -5%;
+}
+
+.demoAppWords{
+  color: $lightpeach;
+  font-style: italic;
+  font-size: 11px;
+}
+
+
+#myInput		{
+  color:white;
+  width: 65%;
+  -webkit-transition:width 0.3s ease-in-out;
+}
+#myInput:focus	{
+  box-shadow: none;
+  color:white;
+  width:80%;
+  -webkit-transition:width 0.5s ease-in-out;
+}
+
+@-webkit-keyframes autofill {
+    to {
+        color: white;
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+//************************************************************ TABS STYLING *********************************************************
 .react-tabs__tab-list {
     border-bottom: 1px solid #ffa500;
     margin: 0 0 10px;
     padding: 0;
 }
 
-// .react-tabs__tab {
-//     color:orange;
-// }
 .react-tabs__tab--selected {
     color:white !important;
 }
 
 
-.react-tabs__tab-list {
-  border-bottom: 1px solid #aaa;
-  margin: 0 0 10px;
-  padding: 0;
-}
+// .react-tabs__tab-list {
+//   border-bottom: 1px solid #aaa;
+//   margin: 0 0 10px;
+//   padding: 0;
+// }
 
 .react-tabs__tab {
   display: inline-block;
@@ -54,10 +126,9 @@
 }
 
 .react-tabs__tab--selected {
-  background: #fff;
-  border-color: #aaa;
-  color: black !important;
-  border-radius: 5px 5px 0 0;
+  background: $lightpeach;
+      /* border-color: #aaa; */
+      color: white !important;
 }
 
 .react-tabs__tab--disabled {
@@ -91,6 +162,6 @@
 
 .submitLogin_register_button{
   color: #fff !important;
-background-color: #ffa500 !important;
-border-color: #ffffff !important;
+  background-color: #ffa500 !important;
+  border-color: #ffffff !important;
 }

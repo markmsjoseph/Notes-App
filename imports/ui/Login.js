@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import LoginHeader from './LoginHeader';
 import {Session} from 'meteor/session';
+import { CSSTransitionGroup } from 'react-transition-group';
 // IN ORDER TO VERIFY EMAILS ETC, WE NEED AN SMTP ACCOUNT. THIS STEP WAS SKIPPED but
 // THIS URL HAS DATA ON IT https://themeteorchef.com/tutorials/sign-up-with-email-verification AND
 //https://docs.meteor.com/api/passwords.html#Accounts-verifyEmail
@@ -73,53 +74,88 @@ export default class Login extends React.Component {
   render() {
     const sess = Session.set('newTest', "loginsess");
     return (
-      <div>
 
+      <div className="container">
+
+            <div className="row justify-content-center">
+          <CSSTransitionGroup transitionName="loginLoad" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={300} transitionLeaveTimeout={ 300}>
             <div className="boxed-view">
-    <div className="boxed-view__box">
+                  <div className="boxed-view__box">
+
                             <Tabs defaultIndex={1} onSelect={index => console.log(index)}>
 
-                                   <TabList>
-                                     <h1> Welcome to the poerty app</h1>
-                                     <Tab>Login</Tab>
-                                     <Tab>Register</Tab>
+                                   <TabList className="tabtop">
+
+
+                                     <h1 className = "chatAppHeader"> Poetry App </h1>
+
+                                    <CSSTransitionGroup transitionName="tabLoad" transitionAppear={true} transitionAppearTimeout={800}  transitionLeave={false} >
+                                           <Tab>Sign In</Tab>
+                                           <Tab>Sign Up</Tab>
+                                   </CSSTransitionGroup>
                                    </TabList>
 
-                                   <TabPanel>
-                                        <h4 className="login-error">  {this.state.error ? <p>{this.state.error}</p> : undefined }</h4>
-                                          <h3>Already have an account? You can login below</h3>
-                                          <form onSubmit={this.onSubmitHandler.bind(this)} noValidate>
-                                              <input className = 'form-control form-control-lg' type="email" name="email" ref = "myEmail" placeholder = "email"/>
-                                              <br></br>
-                                              <input className = 'form-control form-control-lg' type="password" name="password" ref = "myPassword" placeholder= "password"/>
-                                              <br></br>
-                                              <button className='button'> Login</button>
-                                          </form>
-                                   </TabPanel>
+                                         <TabPanel>
+                                           <CSSTransitionGroup transitionName="switchTabs" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={800} transitionLeaveTimeout={ 800}>
+                                              <h4 className="login-error">  {this.state.error ? <p>{this.state.error}</p> : undefined }</h4>
+                                                <h3 className = "formHeader">Already have an account? You can login below</h3>
+                                                <form onSubmit={this.onSubmitHandler.bind(this)} noValidate>
+                                                    <div className="row justify-content-center">
+                                                        <i className="glyphicon glyphicon-user "></i>
+                                                    <input  id="myInput" className = ' inputLoginFormStyles form-control form-control-lg' type="email" name="email" ref = "myEmail" placeholder = "email"/>
+                                                  </div>
+                                                    <br></br>
+                                                      <div className="row justify-content-center">
+                                                          <i className="glyphicon glyphicon-lock "></i>
+                                                        <input id="myInput" className = ' inputLoginFormStyles form-control form-control-lg' type="password" name="password" ref = "myPassword" placeholder= "password"/>
+                                                      </div><br></br>
+                                                    <button className='button-login'> Login</button>
+                                                </form>
+                                              </CSSTransitionGroup>
+                                         </TabPanel>
+
 
                                    <TabPanel>
-                                        <h3>Register with us below to login</h3>
+                                     <CSSTransitionGroup transitionName="switchTabs" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={800} transitionLeaveTimeout={ 800}>
+                                        <h3 className = "formHeader">Register to use app</h3>
+                                        <p className="demoAppWords">(Its a demo app so you can use a made up email)</p>
                                           <p className="login-error">  {this.state.error ? <p>{this.state.error}</p> : undefined }</p>
 
                                          <form onSubmit={this.onSubmitHandlerRegister.bind(this)} noValidate>
 
 
-                                                <input className = 'form-control form-control-lg' type="text" name="userName" ref = "userName" placeholder = "User Name"/>
-                                                <br></br>
+                                                  <div className=" row justify-content-center">
 
-                                                <input className = 'form-control form-control-lg' type="email" name="email" ref = "myEmail" placeholder = "Email"/>
-                                               <br></br>
+                                                    <i className="glyphicon glyphicon-user "></i>
+                                                    <input id="myInput" className = 'inputLoginFormStyles form-control form-control-lg' type="text" name="userName" ref = "userName" placeholder = "User Name"/>
 
-                                               <input className = 'form-control form-control-lg' type="password" name="password" ref = "myPassword" placeholder= "Password"/>
-                                               <br></br>
+                                                  </div><br></br>
 
-                                                <button className=' button'> Create Account</button>
+                                                  <div className="  row justify-content-center">
+                                                      <i className="glyphicon glyphicon-envelope "></i>
+                                                    <input id="myInput" className = 'inputLoginFormStyles form-control form-control-lg' type="email" name="email" ref = "myEmail" placeholder = "Email"/>
+
+                                               </div>
+                                                 <br></br>
+
+                                                 <div className=" row justify-content-center">
+                                                      <i className="glyphicon glyphicon-lock "></i>
+                                                   <input id="myInput" className = 'inputLoginFormStyles form-control form-control-lg' type="password" name="password" ref = "myPassword" placeholder= "Password"/>
+
+                                               </div>
+                                                 <br></br>
+
+                                                <button className=' button-login'> Create Account</button>
                                          </form>
+                                                         </CSSTransitionGroup>
 
                                   </TabPanel>
                             </Tabs>
+
                 </div>
                 </div>
+                   </CSSTransitionGroup>
+                    </div>
       </div>
   );
   }

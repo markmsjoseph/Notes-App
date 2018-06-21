@@ -28,3 +28,4 @@ twbs:bootstrap
 cfs:filesystem
 practicalmeteor:mocha
 react-meteor-data
+alexwine:bootstrap-4

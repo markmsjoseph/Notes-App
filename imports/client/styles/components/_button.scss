@@ -4,18 +4,36 @@
   }
 }
 
+
+
 .button {
-  background-color: $button-bg;
+  background-color:$lightPurpleish;
   border: none;
-  color: $button-color;
+  color: white;
   cursor: pointer;
-  font-size: $base-font-size;
+  font-size: 14px;
   line-height: 1.2;
-  margin-bottom: $space;
-  padding: $input-spacing;
+  margin-bottom: 10px;
+  padding: 10px;
   text-transform: uppercase;
 
 }
+
+.button-login{
+  background-color:$lightPurpleish;
+border: none;
+color: white;
+cursor: pointer;
+font-size: 14px;
+line-height: 1.2;
+margin-bottom: 10px;
+padding: 11px;
+border-radius: 46px;
+width: 70%;
+text-transform: uppercase;
+}
+
+
 .button-comment {
   background-color: $button-bg;
   border: none;
