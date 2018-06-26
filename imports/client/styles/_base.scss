@@ -33,7 +33,11 @@ a {
   color: $body-default-color;
 }
 
-
+.allContainer{
+  background: -webkit-linear-gradient(top, #010054 0%, rgba(1, 0, 82, 0.9) 8%, rgba(6, 36, 109, 0.86) 42%, rgba(0, 27, 88, 0.93) 86%, rgba(0, 11, 53, 0.93) 100%), url(images/image1.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 
 
 

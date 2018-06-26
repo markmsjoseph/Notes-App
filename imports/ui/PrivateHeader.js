@@ -47,7 +47,7 @@ export class PrivateHeader extends React.Component {
                                       <h3 className = "header__links">   <Link to ="/dashboard" className="header-navs">Back to Dashboard</Link></h3>
                                   </div>
                               :
-                                  <h3 className = "header__linksAllPoems"> <Link to ="/allnotes">View Public Poems</Link> </h3>
+                                  <h3 > </h3>
                             }
 
 

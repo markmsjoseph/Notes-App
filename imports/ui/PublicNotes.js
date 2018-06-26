@@ -22,6 +22,9 @@ export class PublicNotes extends React.Component {
     componentWillMount() {
         //set the global session variable currentPagePrivacy to the value that was passed in as props from the route component in main.js
         Session.set('currentPagePrivacy', this.props.priavteOrPublic);//set session id
+
+        Session.set('isNavOpen', false);
+
     }
 
     render() {
