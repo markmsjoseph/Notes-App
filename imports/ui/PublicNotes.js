@@ -8,7 +8,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import {Notes} from '../api/notes';
 import CommentComponent from './CommentComponent';
 import Accordian from './Accordian';
-
+import { CSSTransitionGroup } from 'react-transition-group';
 
 export class PublicNotes extends React.Component {
 
@@ -38,6 +38,7 @@ export class PublicNotes extends React.Component {
               </div>
 
               <div className="public_item_container">
+                <CSSTransitionGroup transitionName="example"   transitionEnterTimeout={500}  transitionAppear={true} transitionAppearTimeout={300}  transitionLeave={false} >
                           {this.props.notes.map((note) => {
                             return(
                               <div>
@@ -49,15 +50,17 @@ export class PublicNotes extends React.Component {
                                             <div className="comment">
                                                 <Accordian title="View All Comments">
                                                     <CommentComponent id={note._id}/>
-                                                  {note.comments.reverse().map((comment)=>{
-                                                      return <div className="comment">
 
-                                                                  <p className = "comment-user">{comment.userAndMessage.yourId} says:</p>
-                                                                  <p className = "comment-message"> {comment.userAndMessage.message} </p>
+                                                          {note.comments.reverse().map((comment)=>{
+                                                              return <div className="comment">
 
-                                                            </div>
-                                                    })
-                                                      }
+                                                                          <p className = "comment-user">{comment.userAndMessage.yourId} says:</p>
+                                                                          <p className = "comment-message"> {comment.userAndMessage.message} </p>
+
+                                                                    </div>
+                                                            })
+                                                              }
+
 
                                                        </Accordian>
 
@@ -69,6 +72,7 @@ export class PublicNotes extends React.Component {
                             </div>
                           );
                         })}
+                                                                     </CSSTransitionGroup>
               </div>
       </div>
     );

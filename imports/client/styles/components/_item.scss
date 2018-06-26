@@ -151,10 +151,14 @@ padding-right: 5px;
 
 //******************************************** COMMENTS ITEM ********************************************
 .comment{
+
+max-height: 300px;
+overflow-y: scroll;
   background-color: #efefef;
       padding: 5px;
       margin: 5px;
       border: 1px solid #bfbfbf;
+          border-radius: 9px;
       @include desktopView{
           padding: 10px;
 
